@@ -5,7 +5,6 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
-var controllers = require('./controllers/');
 var app = express();
 
 // all environments
@@ -45,7 +44,19 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.post('/exec', controllers.exec);
+
+// ROUTES
+var tagsController = require('./controllers/tags.controller');
+app.get('/tags',tagsController.index)
+app.post('/tags',tagsController.create)
+app.get('/tags/:id',tagsController.show)
+app.delete('/tags/:id',tagsController.delete)
+
+
+
+
+
+
 
 http.createServer(app).listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
