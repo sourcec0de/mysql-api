@@ -16,3 +16,20 @@ Connect to your server by modifying `controllers/index.js`
 - `user`
 - `password`
 - `database`
+
+
+start the application with
+`npm install`
+`nodemon app.js` or `node app.js`
+
+send `POST` to http://localhost:3000/exec
+
+
+#### Example Curl
+```shell
+
+curl -XPOST http://localhost:3000/exec -d'
+    SELECT * FROM tags
+'
+
+```
