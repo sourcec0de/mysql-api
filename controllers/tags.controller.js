@@ -31,9 +31,13 @@ exports.show = function(req,res){
 
 // Create New Tag
 exports.create = function(req,res){
+    console.log(req.body)
     var tag = new Tag(req.body);
+
     tag.save(function(err){
+        console.log(err)
         if(err) return res.json(err,400);
+        console.log("SAVE")
         res.json(tag,201)
     });
 };
